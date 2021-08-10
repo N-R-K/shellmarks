@@ -11,7 +11,7 @@ SH_MARKS=${SH_MARKS:-${XDG_DATA_HOME:-$HOME/.local/share}/shellmarks}
 # https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
 col_error="\033[1;31m"     # Red
 col_name="\033[1;33m"      # Yellow
-col_path="\033[1;34m"      # Blue
+col_path="\033[0;34m"      # Blue
 col_reset="\033[m"         # Don't change this
 
 
