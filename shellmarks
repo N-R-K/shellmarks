@@ -49,6 +49,8 @@ bk_remove() {
 
 bk_path() {
   [ -z "$1" ] && die "No argument given"
+  [ ! -e "${SH_MARKS}/${1}" ] &&
+    die "${1} doesn't exist"
   [ ! -h "${SH_MARKS}/${1}" ] &&
     die "${1} doesn't appear to be a symlink..."
   symlink_resolve "$1"
