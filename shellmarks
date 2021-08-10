@@ -36,6 +36,14 @@ bk_cd() {
   echo "${SH_MARKS}/${1}"
 }
 
+bk_list() {
+  cd "${SH_MARKS}" || die "Could not cd into ${SH_MARKS}"
+  for file in *; do
+    [ -e "$file" ] && [ -h "$file" ] &&
+      printf "%s\n" "$file"
+  done
+}
+
 ### main ###
 
 [ -d "$SH_MARKS" ] ||
@@ -51,5 +59,8 @@ case "$1" in
     ;;
   "cd")
     bk_cd "$2"
+    ;;
+  "ls")
+    bk_list
     ;;
 esac
