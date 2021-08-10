@@ -22,6 +22,13 @@ bk_add() {
   ln -s "$PWD" "${SH_MARKS}/${1}"
 }
 
+bk_remove() {
+  [ -z "$1" ] && die "Nothing to remove"
+  [ ! -h "${SH_MARKS}/${1}" ] &&
+    die "${1} doesn't appear to be symlink..."
+  rm -f "${SH_MARKS}/${1}"
+}
+
 
 ### main ###
 
@@ -32,5 +39,8 @@ bk_add() {
 case "$1" in
   "add")
     bk_add "$2"
+    ;;
+  "rm")
+    bk_remove "$2"
     ;;
 esac
