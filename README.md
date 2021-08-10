@@ -22,7 +22,7 @@ Instead of copying, you can also create a symlink. This way you can do a git pul
 
 ## Usage
 
-By default shellmark uses `~/.local/share/shellmarks` as the bookmark directory. This can be changed via the `$SH_MARKS` environment variable.
+By default shellmarks uses `~/.local/share/shellmarks` as the bookmark directory. This can be changed via the `$SH_MARKS` environment variable.
 
 
 Adding a bookmark. If [target] is omitted the current working directory `$PWD`, will be used.
