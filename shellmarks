@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+## Copyright 2021 NRK
+## Licensed under GPL v3. See LICENSE for more details.
 # set -x
 
 ### Config ###
