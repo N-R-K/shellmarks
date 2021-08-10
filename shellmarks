@@ -42,7 +42,7 @@ bk_remove() {
   rm -f "${SH_MARKS}/${1}"
 }
 
-bk_cd() {
+bk_path() {
   [ -z "$1" ] && die "No argument given"
   [ ! -h "${SH_MARKS}/${1}" ] &&
     die "${1} doesn't appear to be a symlink..."
@@ -75,8 +75,8 @@ case "$1" in
   "rm")
     bk_remove "$2"
     ;;
-  "cd")
-    bk_cd "$2"
+  "path")
+    bk_path "$2"
     ;;
   "ls")
     bk_list
