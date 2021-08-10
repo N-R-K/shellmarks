@@ -32,7 +32,8 @@ bk_add() {
   [ -z "$1" ] && die "No name given"
   [ -e "${SH_MARKS}/${1}" ] &&
     die "${1} already exists"
-  ln -s "$PWD" "${SH_MARKS}/${1}"
+  target="${2:-$PWD}"
+  ln -s "$target" "${SH_MARKS}/${1}"
 }
 
 bk_remove() {
@@ -70,7 +71,7 @@ bk_list() {
 
 case "$1" in
   "add")
-    bk_add "$2"
+    bk_add "$2" "$3"
     ;;
   "rm")
     bk_remove "$2"
