@@ -27,7 +27,8 @@ die() {
 }
 
 symlink_resolve() {
-  # this will fail epically if the filename has "->" in it
+  [ "${1#*->}" = "$1" 2>/dev/null ] ||
+    die "Filename contains "\""->"\"" ... Unacceptable!"
   ls -l "${SH_MARKS}/${1}" | sed 's|.* -> ||g'
 }
 
