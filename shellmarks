@@ -63,4 +63,7 @@ case "$1" in
   "ls")
     bk_list
     ;;
+  *)
+    die "INVALID COMMAND: $1"
+    ;;
 esac
