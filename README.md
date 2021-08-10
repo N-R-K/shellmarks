@@ -83,9 +83,9 @@ Another way would be to utilize the [$CDPATH](https://linux.101hacks.com/cd-comm
 Add the following to your `.zshrc` to get auto-completion.
 
 ```
-shmk_autocomp() { reply=($(shellmarks -c ls | sed 's| ->.*||g')); }
-compctl -K shmk_autocomp shellmarks
-compctl -K shmk_autocomp g  # for the cd function
+_shmk_autocomp() { reply=($(shellmarks -c ls | sed 's| ->.*||g')); }
+compctl -K _shmk_autocomp shellmarks
+compctl -K _shmk_autocomp g  # for the cd function
 
 ```
 
