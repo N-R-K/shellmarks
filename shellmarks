@@ -58,6 +58,9 @@ bk_list() {
   mkdir -p "$SH_MARKS" ||
   die "Cannot create directory $SH_MARKS"
 
+[ "$1" = "-c" ] && shift &&
+  unset col_error col_name col_path col_reset
+
 case "$1" in
   "add")
     bk_add "$2"
