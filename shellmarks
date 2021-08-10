@@ -54,8 +54,9 @@ bk_list() {
   for file in *; do
     [ -e "$file" ] && [ -h "$file" ] &&
       printf "${col_name}%s -> ${col_path}" "$file" &&
-      symlink_resolve "$file" && printf "${col_reset}"
+      symlink_resolve "$file"
   done
+  printf "${col_reset}"
 }
 
 ### main ###
