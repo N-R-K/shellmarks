@@ -84,12 +84,11 @@ Add the following to your `.zshrc` to get auto-completion.
 
 ```
 _shmk_autocomp() { reply=($(shellmarks -c ls | sed 's| ->.*||g')); }
-compctl -K _shmk_autocomp shellmarks
-compctl -K _shmk_autocomp g  # for the cd function
+setopt complete_aliases
+compctl -K _shmk_autocomp g  # for the cd function, change 'g' if your function is named differently
+compctl -K _shmk_autocomp d  # for the d alias, change it to fit your alias
 
 ```
-
-If you're using the cd function and renamed it to something else then change the `g` in the last line to whatever your cd function is named.
 
 ### Bash
 
@@ -105,6 +104,6 @@ _shmk_autocomp() {
   return 0
 }
 
-complete -F _shmk_autocomp g  # for the cd function
+complete -F _shmk_autocomp g  # for the cd function, change 'g' if your function is named differently
 complete -F _shmk_autocomp d  # for the d alias, change it to fit your alias
 ```
