@@ -93,4 +93,18 @@ If you're using the cd function and renamed it to something else then change the
 
 ### Bash
 
-Soon™️
+Add the following to your `.bashrc` to get auto-completion.
+
+```
+bind 'set show-all-if-ambiguous on'  # optional, but good to have
+_shmk_autocomp() {
+  local curw
+  COMPREPLY=()
+  curw=${COMP_WORDS[COMP_CWORD]}
+  COMPREPLY=($(compgen -W '`shellmarks -c ls | sed "s| ->.*||g"`' -- $curw))
+  return 0
+}
+
+complete -F _shmk_autocomp g  # for the cd function
+complete -F _shmk_autocomp d  # for the d alias, change it to fit your alias
+```
