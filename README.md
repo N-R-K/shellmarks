@@ -1,12 +1,12 @@
 # Shellmarks
 
-A simple script to manage bookmarks via symlinks.
+A simple shell script for managing bookmarks via symlinks.
 
 ![shellmarks](shellmarks.png)
 
 Shellmarks is heavily inspired by [bashmarks](https://github.com/huyng/bashmarks). Unlike bashmarks however, shellmarks uses symlinks to create and manage bookmarks.
 
-This is good because now you can point many different application, such as your filemanger, to this single unified directory. You no longer need to maintain different ways of bookmarking on different apps.
+This is good because now you can point many different application, such as your filemanger or the filepicker etc, to a single unified directory. You no longer need to maintain different bookmarks for different applications.
 
 
 ## Installation
@@ -25,12 +25,12 @@ Instead of copying, you can also create a symlink. This way you can do a git pul
 By default shellmarks uses `~/.local/share/shellmarks` as the bookmark directory. This can be changed via the `$SH_MARKS` environment variable.
 
 
-Adding a bookmark. If [target] is omitted the current working directory `$PWD`, will be used.
+Add a bookmark. If [target] is omitted the current working directory `$PWD`, will be used.
 ```
 shellmarks add <name> [target]
 ```
 
-Lists all the available bookmarks.
+List all the available bookmarks.
 ```
 shellmarks ls
 ```
