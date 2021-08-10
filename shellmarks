@@ -1,0 +1,36 @@
+#!/bin/sh
+# set -x
+
+### Config ###
+
+# shellmarks directory. uses ~/.local/share/shellmarks if not set
+SH_MARKS=${SH_MARKS:-${XDG_DATA_HOME:-$HOME/.local/share}/shellmarks}
+
+
+### Functions ###
+
+die() {
+  [ -n "$1" ] &&
+    printf '%s\n' "$@" >/dev/stderr
+  exit 1
+}
+
+bk_add() {
+  [ -z "$1" ] && die "No name given"
+  [ -e "${SH_MARKS}/${1}" ] &&
+    die "${1} already exists"
+  ln -s "$PWD" "${SH_MARKS}/${1}"
+}
+
+
+### main ###
+
+[ -d "$SH_MARKS" ] ||
+  mkdir -p "$SH_MARKS" ||
+  die "Cannot create directory $SH_MARKS"
+
+case "$1" in
+  "add")
+    bk_add "$2"
+    ;;
+esac
