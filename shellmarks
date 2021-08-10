@@ -25,10 +25,16 @@ bk_add() {
 bk_remove() {
   [ -z "$1" ] && die "Nothing to remove"
   [ ! -h "${SH_MARKS}/${1}" ] &&
-    die "${1} doesn't appear to be symlink..."
+    die "${1} doesn't appear to be a symlink..."
   rm -f "${SH_MARKS}/${1}"
 }
 
+bk_cd() {
+  [ -z "$1" ] && die "No argument given"
+  [ ! -h "${SH_MARKS}/${1}" ] &&
+    die "${1} doesn't appear to be a symlink..."
+  echo "${SH_MARKS}/${1}"
+}
 
 ### main ###
 
@@ -42,5 +48,8 @@ case "$1" in
     ;;
   "rm")
     bk_remove "$2"
+    ;;
+  "cd")
+    bk_cd "$2"
     ;;
 esac
