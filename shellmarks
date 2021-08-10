@@ -6,12 +6,20 @@
 # shellmarks directory. uses ~/.local/share/shellmarks if not set
 SH_MARKS=${SH_MARKS:-${XDG_DATA_HOME:-$HOME/.local/share}/shellmarks}
 
+# colors
+# For a list of ANSI color codes, check the link below
+# https://gist.github.com/Prakasaka/219fe5695beeb4d6311583e79933a009
+col_error="\033[1;31m"     # Red
+col_name="\033[1;33m"      # Yellow
+col_path="\033[1;34m"      # Blue
+col_reset="\033[m"         # Don't change this
+
 
 ### Functions ###
 
 die() {
   [ -n "$1" ] &&
-    printf '%s\n' "$@" >/dev/stderr
+    printf "${col_error}%s${col_reset}\n" "$@" >/dev/stderr
   exit 1
 }
 
@@ -40,7 +48,7 @@ bk_list() {
   cd "${SH_MARKS}" || die "Could not cd into ${SH_MARKS}"
   for file in *; do
     [ -e "$file" ] && [ -h "$file" ] &&
-      printf "%s\n" "$file"
+      printf "${col_name}%s${col_reset}\n" "$file"
   done
 }
 
