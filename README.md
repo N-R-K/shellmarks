@@ -17,7 +17,7 @@ Cone the repo.
 git clone https://codeberg.org/NRK/shellmarks.git
 ```
 
-Then just copy/move `shellmark` into your $PATH. `chmod +x` it if needed.
+Then just copy/move `shellmarks` into your $PATH. `chmod +x` it if needed.
 Instead of copying, you can also create a symlink. This way you can do a git pull to get updates.
 
 ## Usage
