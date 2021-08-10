@@ -32,6 +32,13 @@ symlink_resolve() {
   ls -l "${SH_MARKS}/${1}" | sed 's|.* -> ||g'
 }
 
+symlink_or_die() {
+  [ ! -e "${SH_MARKS}/${1}" ] &&
+    die "${1} doesn't exist"
+  [ ! -h "${SH_MARKS}/${1}" ] &&
+    die "${1} doesn't appear to be a symlink..."
+}
+
 bk_add() {
   [ -z "$1" ] && die "No name given"
   [ -e "${SH_MARKS}/${1}" ] &&
@@ -42,17 +49,13 @@ bk_add() {
 
 bk_remove() {
   [ -z "$1" ] && die "Nothing to remove"
-  [ ! -h "${SH_MARKS}/${1}" ] &&
-    die "${1} doesn't appear to be a symlink..."
+  symlink_or_die "$1"
   rm -f "${SH_MARKS}/${1}"
 }
 
 bk_path() {
   [ -z "$1" ] && die "No argument given"
-  [ ! -e "${SH_MARKS}/${1}" ] &&
-    die "${1} doesn't exist"
-  [ ! -h "${SH_MARKS}/${1}" ] &&
-    die "${1} doesn't appear to be a symlink..."
+  symlink_or_die "$1"
   symlink_resolve "$1"
 }
 
