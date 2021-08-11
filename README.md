@@ -30,9 +30,9 @@ Add a bookmark. If [target] is omitted the current working directory `$PWD`, wil
 shellmarks add <name> [target]
 ```
 
-List all the available bookmarks.
+List all the available bookmarks. When called with the `-n` flag, it will only print the bookmark name without printing the realpath.
 ```
-shellmarks ls
+shellmarks ls [-n]
 ```
 
 Remove a bookmark.
@@ -83,7 +83,7 @@ Another way would be to utilize the [$CDPATH](https://linux.101hacks.com/cd-comm
 Add the following to your `.zshrc` to get auto-completion.
 
 ```
-_shmk_autocomp() { reply=($(shellmarks -c ls | sed 's| ->.*||g')); }
+_shmk_autocomp() { reply=($(shellmarks -c ls -n)); }
 compctl -K _shmk_autocomp shellmarks
 compctl -K _shmk_autocomp g  # for the cd function, change 'g' if your function is named differently
 ```
@@ -98,7 +98,7 @@ _shmk_autocomp() {
   local curw
   COMPREPLY=()
   curw=${COMP_WORDS[COMP_CWORD]}
-  COMPREPLY=($(compgen -W '`shellmarks -c ls | sed "s| ->.*||g"`' -- $curw))
+  COMPREPLY=($(compgen -W '`shellmarks -c ls -n`' -- $curw))
   return 0
 }
 

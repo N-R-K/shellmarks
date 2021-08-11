@@ -63,10 +63,11 @@ bk_path() {
 
 bk_list() {
   cd "${SH_MARKS}" || die "Could not cd into ${SH_MARKS}"
+  [ -z "$1" ] && arrow=" -> "
   for file in *; do
     [ -e "$file" ] && [ -h "$file" ] &&
-      printf "${col_name}%s -> ${col_path}" "$file" &&
-      symlink_resolve "$file"
+      printf "${col_name}%s${arrow}${col_path}${1}" "$file" &&
+      [ -z "$1" ] && symlink_resolve "$file"
   done
   printf "${col_reset}"
 }
@@ -91,7 +92,8 @@ case "$1" in
     bk_path "$2"
     ;;
   "ls")
-    bk_list
+    [ "$2" = "-n" ] && name_only="\n"
+    bk_list "$name_only"
     ;;
   *)
     die "INVALID COMMAND: $1"
