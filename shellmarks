@@ -27,10 +27,8 @@ die() {
 }
 
 symlink_resolve() {
-  [ "${1#*->}" = "$1" 2>/dev/null ] ||
-    die "Filename contains \"->\" ... Unacceptable!"
   resolved="$(ls -dl "${SH_MARKS}/${1}")"
-  echo "${resolved#* -> }"
+  echo "${resolved#*"$1" -> }"
   unset resolved
 }
 
