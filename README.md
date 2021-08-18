@@ -63,12 +63,11 @@ Add the following function into your `~/.bashrc` or `~/.zshrc`.
 
 ```
 g() {
-  local cddir="$(shellmarks path "$1")";
-  if [ $? -eq 0 ]; then
-    cd "$cddir"
-  else
-    printf '%s' "$cddir"
-  fi
+  local cddir="$(shellmarks path "$1")"
+  case "$cddir" in
+    /*) cd "$cddir" ;;
+    *) printf '%s' "$cddir" ;;
+  esac
 }
 ```
 
