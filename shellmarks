@@ -7,7 +7,7 @@
 ### Config ###
 
 # shellmarks directory. uses ~/.local/share/shellmarks if not set
-SH_MARKS=${SH_MARKS:-${XDG_DATA_HOME:-$HOME/.local/share}/shellmarks}
+SH_MARKS="${SH_MARKS:-${XDG_DATA_HOME:-$HOME/.local/share}/shellmarks}"
 
 # colors
 # For a list of ANSI color codes, check the link below
