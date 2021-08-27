@@ -27,9 +27,7 @@ die() {
 }
 
 symlink_resolve() {
-  resolved="$(ls -dl "$1")"
-  echo "${resolved#*"$1" -> }"
-  unset resolved
+  cd "$1" && pwd -P
 }
 
 symlink_or_die() {
