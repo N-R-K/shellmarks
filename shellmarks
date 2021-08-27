@@ -26,6 +26,7 @@ die() {
   exit 1
 }
 
+# expects full file path
 symlink_resolve() {
   cd "$1" && pwd -P
 }
@@ -54,7 +55,7 @@ bk_remove() {
 bk_path() {
   [ -z "$1" ] && die "No argument given"
   symlink_or_die "$1"
-  symlink_resolve "$1"
+  symlink_resolve "${SH_MARKS}/${1}"
 }
 
 bk_list() {
