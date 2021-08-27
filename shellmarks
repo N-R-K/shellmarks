@@ -27,7 +27,7 @@ die() {
 }
 
 symlink_resolve() {
-  resolved="$(ls -dl "${SH_MARKS}/${1}")"
+  resolved="$(ls -dl "$1")"
   echo "${resolved#*"$1" -> }"
   unset resolved
 }
@@ -60,11 +60,10 @@ bk_path() {
 }
 
 bk_list() {
-  cd "${SH_MARKS}" || die "Could not cd into ${SH_MARKS}"
   [ -z "$1" ] && arrow=" -> "
-  for file in *; do
+  for file in "$SH_MARKS"/*; do
     [ -e "$file" ] && [ -h "$file" ] &&
-      printf "${col_name}%s${arrow}${col_path}${1}" "$file" &&
+      printf "${col_name}%s${arrow}${col_path}${1}" "${file##*/}" &&
       [ -z "$1" ] && symlink_resolve "$file"
   done
   printf "${col_reset}"
