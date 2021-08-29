@@ -32,10 +32,8 @@ symlink_resolve() {
 }
 
 symlink_or_die() {
-  [ ! -e "${SH_MARKS}/${1}" ] &&
-    die "${1} doesn't exist"
-  [ ! -h "${SH_MARKS}/${1}" ] &&
-    die "${1} doesn't appear to be a symlink..."
+  [ -e "${SH_MARKS}/${1}" ] || die "${1} doesn't exist"
+  [ -h "${SH_MARKS}/${1}" ] || die "${1} doesn't appear to be a symlink..."
 }
 
 bk_add() {
