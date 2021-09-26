@@ -2,7 +2,6 @@
 #
 ## Copyright 2021 NRK
 ## Licensed under GPL v3. See LICENSE for more details.
-# set -x
 
 ### Config ###
 
@@ -22,7 +21,7 @@ col_reset="\033[m"         # Don't change this
 
 die() {
   [ -n "$1" ] &&
-    printf "${col_error}%s${col_reset}\n" "$@" >/dev/stderr
+    printf "${col_error}%s${col_reset}\n" "$@" >&2
   exit 1
 }
 
@@ -32,15 +31,14 @@ symlink_resolve() {
 }
 
 symlink_or_die() {
-  [ -e "${SH_MARKS}/${1}" ] || die "${1} doesn't exist"
-  [ -h "${SH_MARKS}/${1}" ] || die "${1} doesn't appear to be a symlink..."
-  [ -d "${SH_MARKS}/${1}" ] || die "${1} doesn't appear to be a directory..."
+  [ -e "${SH_MARKS}/${1}" ] || die "$1 doesn't exist"
+  [ -h "${SH_MARKS}/${1}" ] || die "$1 doesn't appear to be a symlink..."
+  [ -d "${SH_MARKS}/${1}" ] || die "$1 doesn't appear to be a directory..."
 }
 
 bk_add() {
   [ -z "$1" ] && die "No name given"
-  [ -e "${SH_MARKS}/${1}" ] &&
-    die "${1} already exists"
+  [ -e "${SH_MARKS}/${1}" ] && die "$1 already exists"
   target="${2:-$PWD}"
   ln -s "$target" "${SH_MARKS}/${1}"
 }
@@ -64,7 +62,7 @@ bk_list() {
       printf "${col_name}%s${arrow}${col_path}${1}" "${file##*/}" &&
       [ -z "$1" ] && symlink_resolve "$file"
   done
-  printf "${col_reset}"
+  printf "$col_reset"
 }
 
 ### main ###
