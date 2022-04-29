@@ -47,7 +47,7 @@ shellmarks path <name>
 
 All of these commands are meant to be aliased. In the example image above I'm using the following aliases. Copy paste them into your `~/.bashrc` or `~/.zshrc`.
 
-```
+```sh
 alias l="shellmarks ls"
 alias d="shellmarks rm"
 alias sd="shellmarks add"
@@ -61,7 +61,7 @@ Since shellmarks simply creates symlinks, there's a couple ways to actually achi
 
 Add the following function into your `~/.bashrc` or `~/.zshrc`.
 
-```
+```sh
 g() {
   local cddir="$(shellmarks path "$1")"
   case "$cddir" in
@@ -81,7 +81,7 @@ Another way would be to utilize the [$CDPATH](https://linux.101hacks.com/cd-comm
 
 Add the following to your `.zshrc` to get auto-completion.
 
-```
+```zsh
 _shmk_autocomp() { reply=($(shellmarks -c ls -n)); }
 compctl -K _shmk_autocomp shellmarks
 compctl -K _shmk_autocomp g  # for the cd function, change 'g' if your function is named differently
@@ -91,7 +91,7 @@ compctl -K _shmk_autocomp g  # for the cd function, change 'g' if your function 
 
 Add the following to your `.bashrc` to get auto-completion.
 
-```
+```bash
 bind 'set show-all-if-ambiguous on'  # optional, but good to have
 _shmk_autocomp() {
   local curw
