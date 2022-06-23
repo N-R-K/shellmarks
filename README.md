@@ -1,13 +1,19 @@
 # Shellmarks
 
+[![CodeBerg](https://img.shields.io/badge/Hosted_at-Codeberg-%232185D0?style=flat-square&logo=CodeBerg)](https://codeberg.org/NRK/shellmarks)
+
 A simple shell script for managing bookmarks via symlinks.
 
 ![shellmarks](shellmarks.png)
 
-Shellmarks is heavily inspired by [bashmarks](https://github.com/huyng/bashmarks). Unlike bashmarks however, shellmarks uses symlinks to create and manage bookmarks.
+Shellmarks is heavily inspired by [bashmarks].
+Unlike bashmarks however, shellmarks uses symlinks to create and manage bookmarks.
+[bashmarks]: https://github.com/huyng/bashmarks
 
-This is good because now you can point many different application, such as your filemanger or the filepicker etc, to a single unified directory. You no longer need to maintain different bookmarks for different applications.
-
+This is a better and more flexible approach because now you can point many
+different application, such as your filemanger or the filepicker etc, to a
+single unified directory. You no longer need to maintain and sync different
+bookmarks for different applications.
 
 ## Installation
 
@@ -18,19 +24,22 @@ git clone https://codeberg.org/NRK/shellmarks.git
 ```
 
 Then just copy/move `shellmarks` into your $PATH. `chmod +x` it if needed.
-Instead of copying, you can also create a symlink. This way you can do a git pull to get updates.
+Instead of copying, you can also create a symlink. This way you can do a git
+pull to get updates.
 
 ## Usage
 
-By default shellmarks uses `~/.local/share/shellmarks` as the bookmark directory. This can be changed via the `$SH_MARKS` environment variable.
+By default shellmarks uses `~/.local/share/shellmarks` as the bookmark
+directory. This can be changed via the `$SH_MARKS` environment variable.
 
-
-Add a bookmark. If [target] is omitted the current working directory `$PWD`, will be used.
+Add a bookmark. If [target] is omitted the current working directory `$PWD`,
+will be used.
 ```
 shellmarks add <name> [target]
 ```
 
-List all the available bookmarks. When called with the `-n` flag, it will only print the bookmark name without printing the realpath.
+List all the available bookmarks. When called with the `-n` flag, it will only
+print the bookmark name without printing the realpath.
 ```
 shellmarks ls [-n]
 ```
@@ -45,7 +54,9 @@ Print the real path of a bookmark.
 shellmarks path <name>
 ```
 
-All of these commands are meant to be aliased. In the example image above I'm using the following aliases. Copy paste them into your `~/.bashrc` or `~/.zshrc`.
+All of these commands are meant to be aliased. In the example image above I'm
+using the following aliases. Copy paste them into your `~/.bashrc` or
+`~/.zshrc`.
 
 ```sh
 alias l="shellmarks ls"
@@ -57,7 +68,9 @@ You can also disable the colored output by calling shellmarks with the `-c` flag
 
 ### Cd-ing into a directory
 
-Since shellmarks simply creates symlinks, there's a couple ways to actually achieve this. My preferred way is to adding a small function wrapper to your shell.
+Since shellmarks simply creates symlinks, there's a couple ways to actually
+achieve this. My preferred way is to adding a small function wrapper to your
+shell.
 
 Add the following function into your `~/.bashrc` or `~/.zshrc`.
 
@@ -71,9 +84,13 @@ g() {
 }
 ```
 
-Now you can do `g <name>` to cd into a directory form the command line. You are free to change `g` to something else here if you wish.
+Now you can do `g <name>` to cd into a directory form the command line. You are
+free to change `g` to something else here if you wish.
 
-Another way would be to utilize the [$CDPATH](https://linux.101hacks.com/cd-command/cdpath/) environment variable. Do be careful to not modify this variable outside your interactive shell, as that might lead to undesirable side-effects.
+Another way would be to utilize the [$CDPATH] environment variable.  Do be
+careful to not modify this variable outside your interactive shell, as that
+might lead to undesirable side-effects.
+[$CDPATH]: https://linux.101hacks.com/cd-command/cdpath/
 
 ## Auto Complete
 
