@@ -8,6 +8,7 @@ A simple shell script for managing bookmarks via symlinks.
 
 Shellmarks is heavily inspired by [bashmarks].
 Unlike bashmarks however, shellmarks uses symlinks to create and manage bookmarks.
+
 [bashmarks]: https://github.com/huyng/bashmarks
 
 This is a better and more flexible approach because now you can point many
@@ -90,6 +91,7 @@ free to change `g` to something else here if you wish.
 Another way would be to utilize the [$CDPATH] environment variable.  Do be
 careful to not modify this variable outside your interactive shell, as that
 might lead to undesirable side-effects.
+
 [$CDPATH]: https://linux.101hacks.com/cd-command/cdpath/
 
 ## Auto Complete
