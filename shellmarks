@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-## Copyright 2021 NRK
+## Copyright 2021-2024 NRK
 ## Licensed under GPL v3. See LICENSE for more details.
 
 ### Config ###
@@ -71,8 +71,10 @@ bk_list() {
   mkdir -p "$SH_MARKS" ||
   die "Cannot create directory $SH_MARKS"
 
-[ "$1" = "-c" ] && shift &&
+if [ "$1" = "-c" ] || [ "$NO_COLOR" != "" ]; then
+  [ "$1" = "-c" ] && shift
   unset col_error col_name col_path col_reset
+fi
 
 case "$1" in
   "add")

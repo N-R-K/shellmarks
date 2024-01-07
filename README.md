@@ -66,6 +66,9 @@ alias sd="shellmarks add"
 ```
 
 You can also disable the colored output by calling shellmarks with the `-c` flag.
+The [`NO_COLOR`][no-color] environment variable is also respected if set.
+
+[no-color]: https://no-color.org
 
 ### Cd-ing into a directory
 
