@@ -20,8 +20,8 @@ bookmarks for different applications.
 
 Cone the repo.
 
-```
-git clone https://codeberg.org/NRK/shellmarks.git
+```console
+$ git clone https://codeberg.org/NRK/shellmarks.git
 ```
 
 Then just copy/move `shellmarks` into your $PATH. `chmod +x` it if needed.
@@ -33,7 +33,7 @@ pull to get updates.
 By default shellmarks uses `~/.local/share/shellmarks` as the bookmark
 directory. This can be changed via the `$SH_MARKS` environment variable.
 
-Add a bookmark. If [target] is omitted the current working directory `$PWD`,
+Add a bookmark. If `target` is omitted the current working directory `$PWD`,
 will be used.
 ```
 shellmarks add <name> [target]
@@ -66,7 +66,7 @@ alias sd="shellmarks add"
 ```
 
 You can also disable the colored output by calling shellmarks with the `-c` flag.
-The [`NO_COLOR`][no-color] environment variable is also respected if set.
+The [`NO_COLOR`][no-color] environment variable is also respected.
 
 [no-color]: https://no-color.org
 
@@ -91,11 +91,11 @@ g() {
 Now you can do `g <name>` to cd into a directory form the command line. You are
 free to change `g` to something else here if you wish.
 
-Another way would be to utilize the [$CDPATH] environment variable.  Do be
-careful to not modify this variable outside your interactive shell, as that
-might lead to undesirable side-effects.
+Another way would be to utilize the [`CDPATH`][cdpath] environment variable.
+Do be careful to not modify this variable outside your interactive shell, as
+that might lead to undesirable side-effects.
 
-[$CDPATH]: https://linux.101hacks.com/cd-command/cdpath/
+[cdpath]: https://linux.101hacks.com/cd-command/cdpath/
 
 ## Auto Complete
 
