@@ -18,7 +18,7 @@ bookmarks for different applications.
 
 ## Installation
 
-Cone the repo.
+Clone the repo.
 
 ```console
 $ git clone https://codeberg.org/NRK/shellmarks.git
