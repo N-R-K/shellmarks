@@ -6,7 +6,7 @@ A simple shell script for managing bookmarks via symlinks.
 
 ![shellmarks](shellmarks.png)
 
-Shellmarks is heavily inspired by [bashmarks].
+Shellmarks is heavily inspired by [bashmarks][].
 Unlike bashmarks however, shellmarks uses symlinks to create and manage bookmarks.
 
 [bashmarks]: https://github.com/huyng/bashmarks
@@ -24,7 +24,7 @@ Clone the repo.
 $ git clone https://codeberg.org/NRK/shellmarks.git
 ```
 
-Then just copy/move `shellmarks` into your $PATH. `chmod +x` it if needed.
+Then just copy/move `shellmarks` into your `$PATH` (e.g `/usr/local/bin/`).
 Instead of copying, you can also create a symlink. This way you can do a git
 pull to get updates.
 
